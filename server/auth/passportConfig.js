@@ -37,6 +37,7 @@ const configPassportApp = (argApp) => {
   });
   passport.deserializeUser(function(user, done) {
     console.log('....deserializeUser: ') ;
+    console.dir(user) ;
     done(null, user);
   });
   //
