@@ -1,0 +1,11 @@
+http://www.selfsignedcertificate.com/
+
+How to repeat
+
+You can create a key and certificate yourself instead of downloading them from this page. This makes your key more secure. To generate a key:
+
+openssl genrsa -out sebastianandreoletti.com.ar.key 2048
+
+And the certificate:
+
+openssl req -new -x509 -key sebastianandreoletti.com.ar.key -out sebastianandreoletti.com.ar.cert -days 3650 -subj /CN=sebastianandreoletti.com.ar

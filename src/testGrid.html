@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+    <!-- -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="title" content ="Sebastian Andreoletti - Developer - IT Specialist ">
+    <meta name="description" content="Sebastian Andreoletti. Developer. IT Specialist. Javascript, Cloud" />
+    <!-- -->
+    <title>Sebastian Andreoletti | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <!-- -->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f6ddcc;
+            background: linear-gradient( 90, #f6ddcc, white);
+        }
+        #header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            font-size: 8px;
+        }
+        #header div  {
+           border: 2px solid red ;
+        }
+        #nombre {
+            grid-column-start: 1 ;
+            grid-column-end: 5 ;
+            grid-row-start: 1 ;
+            grid-row-end: 1 ;
+            min-height: 5vh ;
+        }
+        #descripcion {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 2;
+            min-height: 0%;
+        }
+        * {
+            font-family: 'Roboto Mono', monospace;
+        }
+        /*
+        .wp-nombre {
+            word-wrap: break-word;
+            white-space: initial;
+            font-size: 22px !important;
+            font-weight: bolder !important ;
+        }
+        */
+        @media (max-width: 400){
+            .wp-nombre {
+                word-wrap: break-word;
+                white-space: initial;
+                font-size: 12px !important;
+                font-weight: bolder !important ;
+            }
+        }
+        @media (max-width: 800){
+            .wp-nombre {
+                word-wrap: break-word;
+                white-space: initial;
+                font-size: 24px !important;
+                font-weight: bolder !important ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="nombre" class="wp-nombre">
+            <h2>Sebastian Andreoletti</h2>
+        </div>
+        <div id="descripcion" class="">
+            <span>Developer</span>
+        </div>
+        <div id="menu" class="">
+            <ul class="nav nav-tabs float-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#Contacto">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#About">Acerca de mí</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

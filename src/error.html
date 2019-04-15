@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sebastian Andreoletti | Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <script>
+        let tempUrl = window.location.href ;
+        if ( tempUrl!="/" && tempUrl!="" ){
+        let intervalTiempo = setInterval(function(){ }, 1000 ) ;
+        //
+        setTimeout(function () {
+            clearInterval(intervalTiempo) ;
+            window.location.href = "/" ;
+         }, 10000) ;
+    }
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/*
+*   Header para web personal
+*/
+/* */
+#header {
+    min-height: 100px;
+    line-height: 90px !important;
+    font-size: 60px;
+}
+/* */
+#body {
+
+}
+#footer {
+    min-height: 200px ;
+    font-size: 40px ;
+}
+#footer i.fa{
+    font-size: 80px ;
+}
+/*
+* Fonts
+*/
+/* @import url('https://fonts.googleapis.com/css?family=Ubuntu') ; */
+/* */
+.font-roboto-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+/*
+*
+*/
+/*  body { padding-top: 15vh; } para continuar despues del header */
+/*  */
+@media screen and (max-height: 900px){
+    .wp-body {
+        height: 84vh ;
+    }
+}
+@media screen and (max-height: 800px){
+    .wp-body {
+        height: 80vh ;
+    }
+}
+@media screen and (max-height: 760px){
+    .wp-body {
+        height: 78vh ;
+    }
+}
+@media screen and (max-height: 660px){
+    .wp-body {
+        height: 74vh ;
+    }
+}
+@media screen and (max-height: 400px){
+    .wp-body {
+        height: 70vh ;
+    }
+    .span-en-construccion {
+        font-size: 80px !important;
+    }
+}
+/*  */
+@media (max-width: 1290px) {
+}
+@media (max-width: 800px) {
+    #footer i.fa{
+        font-size: 60px ;
+    }
+    .span-en-construccion {
+        line-height: 40vh !important;
+        font-size: 60px !important;
+    }
+    .wp-nombre {
+        word-wrap: break-word;
+        white-space: initial;
+        font-size: 30px !important;
+        line-height: 40px ;
+        text-align: left ;
+    }
+}
+@media (max-width: 400px) {
+    .span-en-construccion {
+        margin-top: 15% ;
+        line-height: 10vh !important;
+        font-size: 40px !important;
+    }
+    .wp-nombre {
+        word-wrap: break-word;
+        white-space: initial;
+        font-size: 30px !important;
+        line-height: normal ;
+        text-align: center ;
+    }
+    .wp-pestanias {
+        font-size: 16px !important;
+        line-height:  20px !important ;
+    }
+}
+/* */
+.wp-nombre {
+    word-wrap: break-word;
+    white-space: initial;
+    font-size: 34px !important;
+    font-weight: bolder !important ;
+}
+.wp-professional-description {
+    word-wrap: break-word;
+    white-space: initial;
+    line-height: 30px ;
+    font-size: 24px !important;
+    font-weight: normal;
+    font-style: italic ;
+}
+.span-en-construccion {
+    line-height: 70vh ;
+    font-size: 120px ;
+    width: 100% !important ;
+    text-align: center !important ;
+}
+.wp-pestanias {
+    font-size: 24px ;
+    line-height:  inherit ;
+}
