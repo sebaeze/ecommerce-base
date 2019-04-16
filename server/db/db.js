@@ -9,13 +9,22 @@ module.exports.classDb = class Db {
     //
     constructor(argDbtype,argCredentials){
         //
+        console.log('argDbtype: '+argDbtype+';') ;
+        console.log('process.env.CLOUDANT_CREDENTIALS: '+process.env.CLOUDANT_CREDENTIALS+';');
+        //
         this.credentials = argCredentials || (String(argDbtype).toUpperCase()=="cloudant" ? process.env.CLOUDANT_CREDENTIALS : false ) ;
         if ( this.credentials ){
             this.cloudantDb   = Cloudant( {url: this.credentials.url, maxAttempt: 5, plugins: [ 'iamauth', { retry: { retryDelayMultiplier: 4 } } ]} );
         } else {
-            let fileContent  = fs.readFileSync( resolvePath('./server/dev/cloudantCredentials.json'), 'utf8');
-            this.credentials = JSON.parse( fileContent ) ;
-            this.cloudantDb  = Cloudant( {url: this.credentials.url, maxAttempt: 5, plugins: [ 'iamauth', { retry: { retryDelayMultiplier: 4 } } ]} );
+            try {
+                let fileContent  = fs.readFileSync( resolvePath('./server/dev/cloudantCredentials.json'), 'utf8');
+                this.credentials = JSON.parse( fileContent ) ;
+                this.cloudantDb  = Cloudant( {url: this.credentials.url, maxAttempt: 5, plugins: [ 'iamauth', { retry: { retryDelayMultiplier: 4 } } ]} );
+            } catch(errReading){
+                console.log('ERROR: reading credentials: ') ;
+                console.dir(errReading) ;
+                throw errReading ;
+            }
         }
         //
         this.dbUsersName = 'dbusers' ;
