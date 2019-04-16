@@ -12,7 +12,7 @@ module.exports.classDb = class Db {
         console.log('argDbtype: '+argDbtype+';') ;
         console.log('process.env.CLOUDANT_CREDENTIALS: '+process.env.CLOUDANT_CREDENTIALS+';')  ;
         //
-        this.credentials = argCredentials || (String(argDbtype).toUpperCase()=="cloudant" ? process.env.CLOUDANT_CREDENTIALS : false ) ;
+        this.credentials = argCredentials || (String(argDbtype).toUpperCase()=="CLOUDANT" ? process.env.CLOUDANT_CREDENTIALS : false ) ;
         if ( this.credentials ){
             this.cloudantDb   = Cloudant( {url: this.credentials.url, maxAttempt: 5, plugins: [ 'iamauth', { retry: { retryDelayMultiplier: 4 } } ]} );
         } else {
