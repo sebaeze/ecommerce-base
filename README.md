@@ -13,9 +13,16 @@ npm run dev
 ### Build y Start
 npm run build && npm start
 
+### NoSql database: CloudAnt
+Set up credential in environment variable: process.env.CLOUDANT_CREDENTIALS
+or
+In the file ./dev/cloudantCredentials.json for dev environment
+
 ### APIs
-* Login:
+* Auth:
 POST /auth/loginUserPassword -d {username:xxx, password:xxxx}
+GET  /auth/mercadolibre
+GET  /auth/google
 
 * User APIs:
 GET  /user

@@ -1,9 +1,8 @@
 /*
 *   Rutas para las APIs del e-commerce
 */
-var express             = require('express') ;
-var router              = express.Router()   ;
-var resolvePath         = require('path').resolve      ;
+var router              = require('express').Router()   ;
+var resolvePath         = require('path').resolve       ;
 var traceStats          = require('../util/traceStats') ;
 var apiDescription      = require('../config/APIdescription').apiDescription ;
 //

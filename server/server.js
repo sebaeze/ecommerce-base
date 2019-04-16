@@ -4,7 +4,6 @@ const session        = require('express-session') ;
 var cookieSession    = require('cookie-session')  ;
 var MemoryStore      = require('session-memory-store')(session);
 const path           = require('path')        ;
-var fnConfigAppAuth  = require('./auth/passportConfig').configApp ;
 var favicon          = require('serve-favicon');
 //
 const app            = express()              ;
@@ -19,30 +18,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieSession({ secret: 'qaz11qaz', cookie: { maxAge: '1d' }}));
 app.use(session({ secret: 'qaz11qaz',cookie: {path: '/',httpOnly: true,maxAge: null },proxy: true, resave: true,saveUninitialized: false, store: new MemoryStore() }));
 //
-/*
-app.use(session({
-  genid: (req) => {
-    console.log('Inside the session middleware')
-    console.log(req.sessionID)
-    return uuid() ;
-  },
-  secret: 'qaz11qaz',
-  resave: false,
-  saveUninitialized: true
-}))
-*/
-//
 app.use(express.static(path.join(__dirname, '../dist')));
 //
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '..dist', 'index.html'));
 });
-//app.use(favicon(__dirname + '../public/favicon.ico'));
+//
+//let passportConfig      = fnConfigAppAuth( app ) ;
+var passportConfig  = require('./auth/passportConfig').configApp( app ) ;
 /*
 *   Rutas
 */
-let passportConfig  = fnConfigAppAuth( app ) ;
-//
 var routerIndex         = require('./routes/routerIndex' ) ;
 var routerApis          = require('./routes/routerApis' ) ;
 //
@@ -81,8 +67,12 @@ app.use(function(req, res, next) {
 /*
 *
 */
-let puerto = process.env.PORT || 3000  ;
-app.listen(puerto,function(){
-  console.log('....listen server on http://localhost:'+puerto) ;
-});
+try {
+  let puerto = process.env.PORT || 3000  ;
+  app.listen(puerto,function(){
+    console.log('....listen server on http://localhost:'+puerto) ;
+  });
+} catch( errApplaunch ){
+  console.dir(errApplaunch) ;
+}
 //

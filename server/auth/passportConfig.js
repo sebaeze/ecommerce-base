@@ -2,34 +2,43 @@
 *    Passport configuration for our app
 */
 var passport            = require('passport') ;
-var LocalStrategy       = require('passport-local').Strategy;
-var express             = require('express') ;
-var router              = express.Router()   ;
+var router              = require('express').Router()   ;
 //
+const strategies        = require('./passportStrategy').strategies ;
 //
-const strategyPassport = new LocalStrategy(
-        function(username, password, done) {
-            console.log('...estoy en localStrategy..') ;
-            console.log('.....user: '+username+' pass: '+password+';') ;
-            let user = {
-                username: username,
-                password: password,
-                mensaje: 'noseeeeeee'
-            }
-            return done(null, user);
-        }
-      ) ;
-//
-router.all('/loginUserPassword',
-            passport.authenticate('local', {successRedirect: '/',
-                                            failureRedirect: '/login',
-                                            failureFlash: false
-                                          })
-) ;
+for ( let keyStrategy in strategies ){
+  let objStrategy = strategies[keyStrategy] ;
+  console.log('kk: '+keyStrategy+' objStrategy: '+objStrategy+';') ;
+  //
+  let objRedirects = { successRedirect: '/',
+                         failureRedirect: '/login',
+                         failureFlash: false
+                      } ;
+  if ( objStrategy.scope ){ objRedirects['scope']=objStrategy.scope; }
+  //
+  if ( objStrategy.urlLogin ){
+    router.all( objStrategy.urlLogin ,passport.authenticate(keyStrategy,objRedirects) ) ;
+    //
+  }
+  //
+  if ( objStrategy.urlCallBack ){
+    //
+    router.all( objStrategy.urlCallBack ,
+                function(req,res,next){
+                  console.log('...estoy en callback:: '+keyStrategy+';') ;
+                  //res.redirect( objRedirects.successRedirect );
+                  console.dir(req) ;
+                  next() ;
+                }.bind(this),
+                passport.authenticate(keyStrategy,objRedirects)
+    ) ;
+    //
+  }
+  //
+  passport.use( objStrategy.strategy ) ;
+}
 //
 const configPassportApp = (argApp) => {
-  //
-  passport.use( strategyPassport ) ;
   //
   passport.serializeUser(function(user, done) {
     console.log('....serializeUser: ') ;
