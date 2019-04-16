@@ -10,7 +10,7 @@ module.exports.classDb = class Db {
     constructor(argDbtype,argCredentials){
         //
         console.log('argDbtype: '+argDbtype+';') ;
-        console.log('process.env.CLOUDANT_CREDENTIALS: '+process.env.CLOUDANT_CREDENTIALS+';');
+        console.log('process.env.CLOUDANT_CREDENTIALS: '+process.env.CLOUDANT_CREDENTIALS+';')  ;
         //
         this.credentials = argCredentials || (String(argDbtype).toUpperCase()=="cloudant" ? process.env.CLOUDANT_CREDENTIALS : false ) ;
         if ( this.credentials ){
