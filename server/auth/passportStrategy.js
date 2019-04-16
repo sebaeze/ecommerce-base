@@ -30,7 +30,7 @@ const allStrategies = {
             strategy:new GoogleStrategy({
                 clientID: '777534133764-06vo7vojcj5dl7s4u0qt1f263kc8j30h.apps.googleusercontent.com',
                 clientSecret: 'L_985JNK9Y9DSZmwfHpkxD1n',
-                callbackURL: 'http://localhost:3000/auth/google/callback'
+                callbackURL: '/auth/google/callback'
             },
             (token, refreshToken, profile, done) => {
                 dbEcomm.mergeUser( profile ) ;
@@ -48,7 +48,7 @@ const allStrategies = {
                     strategy:new MercadoLibreStrategy({
                     clientID: '2491781628284386',
                     clientSecret: 'GiDVCsGfc9YoYyyeVSVvKdrQtME7wkD0',
-                    callbackURL: 'http://localhost:3000/auth/mercadolibre/callback'
+                    callbackURL: '/auth/mercadolibre/callback'
                 },
                 (token, refreshToken, profile, done) => {
                     dbEcomm.mergeUser( profile ) ;
@@ -67,7 +67,7 @@ const allStrategies = {
                 strategy:new FacebookStrategy({
                 clientID: '383443742250970',
                 clientSecret: 'a9e31d0fc60d82da287a50229d5bd0bf',
-                callbackURL: 'http://localhost:3000/auth/facebook/callback'
+                callbackURL: '/auth/facebook/callback'
             },
             (token, refreshToken, profile, done) => {
                 dbEcomm.mergeUser( profile ) ;
