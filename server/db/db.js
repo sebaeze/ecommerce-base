@@ -14,6 +14,7 @@ module.exports.classDb = class Db {
         //
         this.credentials = argCredentials || (String(argDbtype).toUpperCase()=="CLOUDANT" ? process.env.CLOUDANT_CREDENTIALS : false ) ;
         if ( this.credentials ){
+            if ( typeof this.credentials=="string" ){ this.credentials=JSON.parse(this.credentials); }
             this.cloudantDb   = Cloudant( {url: this.credentials.url, maxAttempt: 5, plugins: [ 'iamauth', { retry: { retryDelayMultiplier: 4 } } ]} );
         } else {
             try {
