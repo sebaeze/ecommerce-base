@@ -6,7 +6,7 @@
 .pnp.js
 
 # testing
-/server/dev/*.json
+server/dev/*.json
 
 # production
 /build
