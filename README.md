@@ -18,12 +18,12 @@ Set up credential in environment variable: process.env.CLOUDANT_CREDENTIALS
 or
 In the file ./dev/cloudantCredentials.json for dev environment
 
-
 ### APIs
 * Auth:
 POST /auth/loginUserPassword -d {username:xxx, password:xxxx}
 GET  /auth/mercadolibre
 GET  /auth/google
+GET  /auth/facebook
 
 * User APIs:
 GET  /user

@@ -5,6 +5,9 @@ const LocalStrategy        = require('passport-local').Strategy              ;
 const GoogleStrategy       = require('passport-google-oauth').OAuth2Strategy ;
 const MercadoLibreStrategy = require('passport-mercadolibre').Strategy       ;
 const FacebookStrategy     = require('passport-facebook').Strategy           ;
+const classDb              = require('../db/db').classDb                     ;
+//
+var dbEcomm                = new classDb('cloudant') ;
 //
 const allStrategies = {
   'local':{
@@ -30,6 +33,7 @@ const allStrategies = {
                 callbackURL: 'http://localhost:3000/auth/google/callback'
             },
             (token, refreshToken, profile, done) => {
+                dbEcomm.mergeUser( profile ) ;
                 return done(null, {
                     profile: profile,
                     token: token,
@@ -47,6 +51,7 @@ const allStrategies = {
                     callbackURL: 'http://localhost:3000/auth/mercadolibre/callback'
                 },
                 (token, refreshToken, profile, done) => {
+                    dbEcomm.mergeUser( profile ) ;
                     console.log('.....mercadolibre callback:: ');
                     console.dir(profile) ;
                     return done(null, {
@@ -65,6 +70,7 @@ const allStrategies = {
                 callbackURL: 'http://localhost:3000/auth/facebook/callback'
             },
             (token, refreshToken, profile, done) => {
+                dbEcomm.mergeUser( profile ) ;
                 console.log('.....facebook callback:: ');
                 console.dir(profile) ;
                 return done(null, {

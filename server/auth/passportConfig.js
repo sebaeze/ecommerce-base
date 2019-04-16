@@ -27,7 +27,7 @@ for ( let keyStrategy in strategies ){
                 function(req,res,next){
                   console.log('...estoy en callback:: '+keyStrategy+';') ;
                   //res.redirect( objRedirects.successRedirect );
-                  console.dir(req) ;
+                  //console.dir(req) ;
                   next() ;
                 }.bind(this),
                 passport.authenticate(keyStrategy,objRedirects)
