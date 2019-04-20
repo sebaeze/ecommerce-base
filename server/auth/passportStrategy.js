@@ -5,9 +5,9 @@ const LocalStrategy        = require('passport-local').Strategy              ;
 const GoogleStrategy       = require('passport-google-oauth').OAuth2Strategy ;
 const MercadoLibreStrategy = require('passport-mercadolibre').Strategy       ;
 const FacebookStrategy     = require('passport-facebook').Strategy           ;
-const classDb              = require('../db/db').classDb                     ;
+const classDbUser          = require('../db/dbUser').classDbUser             ;
 //
-var dbEcomm                = new classDb('cloudant') ;
+var dbEcommUser                = new classDbUser('cloudant') ;
 //
 const allStrategies = {
   'local':{
@@ -33,7 +33,7 @@ const allStrategies = {
                 callbackURL: '/auth/google/callback'
             },
             (token, refreshToken, profile, done) => {
-                dbEcomm.mergeUser( profile ) ;
+                dbEcommUser.mergeUser( profile ) ;
                 return done(null, {
                     profile: profile,
                     token: token,
@@ -51,9 +51,7 @@ const allStrategies = {
                     callbackURL: '/auth/mercadolibre/callback'
                 },
                 (token, refreshToken, profile, done) => {
-                    dbEcomm.mergeUser( profile ) ;
-                    console.log('.....mercadolibre callback:: ');
-                    console.dir(profile) ;
+                    dbEcommUser.mergeUser( profile ) ;
                     return done(null, {
                         profile: profile,
                         token: token
@@ -70,9 +68,7 @@ const allStrategies = {
                 callbackURL: '/auth/facebook/callback'
             },
             (token, refreshToken, profile, done) => {
-                dbEcomm.mergeUser( profile ) ;
-                console.log('.....facebook callback:: ');
-                console.dir(profile) ;
+                dbEcommUser.mergeUser( profile ) ;
                 return done(null, {
                     profile: profile,
                     token: token
@@ -84,5 +80,5 @@ const allStrategies = {
         }
 }
 //
-module.exports.strategies = allStrategies ;
+module.exports.strategies = allStrategies  ;
 //

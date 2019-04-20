@@ -12,6 +12,7 @@ for ( let keyStrategy in strategies ){
                          failureRedirect: '/login',
                          failureFlash: false
                       } ;
+  //
   if ( objStrategy.scope ){ objRedirects['scope']=objStrategy.scope; }
   if ( objStrategy.urlLogin ){
     router.all( objStrategy.urlLogin ,passport.authenticate(keyStrategy,objRedirects) ) ;
